@@ -7,7 +7,45 @@ var getGrade = function(quiz)
  {
     return quiz.grade;
  }
+var answer=getGrade;
 </pre>
+<p>This function takes in a quiz object and retturns the value of its grade attribute.</p>
 
+<h2>A2</h2>
+<pre>
+var answer= d3.mean(classroom[0].quizes.map(getGrade));
+</pre>
+<p>This code retrieves the first penguin, accesses its quizes, then maps those quizes into an array
+ of quiz grades. Finally, the mean of those grades is stored in the variable "answer".  
+ </p>
+ 
+ <h2>A3</h2>
+ <pre>
+  var penguinQuizMean=function(penguin)
+   {
+    return d3.mean(penguin.quizes, getGrade);
+   };
+ </pre>
+ <p>This function takes a single penguin as a parameter. It accesses that penguin's quizes then maps
+  them into an array of that penguin's quiz grades. Finally, the mean of those grades is returned. 
+ </p>
+ 
+ <h2>A4</h2>
+ <pre>
+ var means = classroom.map(penguinQuizMean);
+ </pre>
+ <p>This code maps classroom (an array of penguin objects) into an array of those penguins' quiz means,
+  via the penguinQuizMean function that we wrote for A3. This was a difficult problem, but once we 
+  got a grip on mapping we were able to get it.
+ </p>
+ 
+ <h2>A5</h2>
+ <pre>
+ var classMean = d3.mean(classroom.map(penguinQuizMean));
+ </pre>
+ <p>This problem adds one more aspect to A4. Once the array of quiz means has been created by that code,
+  we use d3.mean() to average the values in that array into a single class mean.
+ </p>
+  
 </body>
 </html>
